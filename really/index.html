@@ -83,7 +83,7 @@ button:hover::before {
         var url = "https://api.openai.com/v1/completions";
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.setRequestHeader("Authorization", "Bearer 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");
+        xhr.setRequestHeader("Authorization", "Bearer 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");
         xhr.onreadystatechange = function() {
           if (xhr.readyState === 4 && xhr.status === 200) {
             var json = JSON.parse(xhr.responseText);
