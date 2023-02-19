@@ -1,0 +1,73 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration-line: none;
+    color: black;
+}
+
+header{
+    height: 80px;
+    width: 100%;
+    background-color: aliceblue;
+    border-bottom: 1px silver;
+}
+.nav-box{
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    height: 40px;
+    padding-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+    color: black;
+    font-family: Georgia, serif;
+}
+
+.nav{
+    display: flex;
+    font-size: 20px;
+    color: black;
+    font-family: Georgia, serif;
+}
+
+.nav li{
+    padding-left: 80px;
+}
+
+h1{
+    color: white;
+    font-size: 50px;
+    margin-left: 150px;
+    position:fixed; bottom: 300px;
+}
+
+h2{
+    color: white;
+    font-size: 50px;
+    margin-left: 150px;
+    position:fixed; bottom: 200px;
+}
+button{
+    color: white;
+    background-color: pink;
+    width: 150px;
+    height: 70px;
+    font-size: 35px;
+    font-weight: bold;
+    border-radius: 20px;
+    margin-left: 150px;
+    position:fixed; bottom: 100px;
+}
+
+.goai{
+    color: white;
+    font-family: Georgia, serif;
+}

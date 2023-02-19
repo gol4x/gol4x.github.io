@@ -1,0 +1,199 @@
+<!doctype html>
+<html class="no-js" lang="">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>MyAi</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>#chatgpt-response { font-family: "宋体"; font-size: 20px; color: #0000FF; font-weight: bold; }</style>
+    <!-- favicon icon -->
+    <!-- All CSS Files Here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/et-line-fonts.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/meanmenu.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <style>
+      button {
+  z-index: 1;
+  position: relative;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  padding: 0.5em 1em;
+  outline: none;
+  border: none;
+  background-color: hsl(236, 32%, 26%);
+  overflow: hidden;
+  transition: color 0.4s ease-in-out;
+}
+
+button::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 100%;
+  right: 100%;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: #3cefff;
+  transform-origin: center;
+  transform: translate3d(50%, -50%, 0) scale3d(0, 0, 0);
+  transition: transform 0.45s ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+  color: #161616;
+}
+
+button:hover::before {
+  transform: translate3d(50%, -50%, 0) scale3d(15, 15, 15);
+}
+    </style>
+      </script>
+    <script>
+	    async function callCHATGPT() {
+		var responseText1 = document.getElementById("chatgpt-response");
+		responseText1.innerHTML = ""
+        function printMessage(message) {
+          var responseText = document.getElementById("chatgpt-response");
+          var index = 0;
+
+          
+          var interval = setInterval(function() {
+            responseText.innerHTML += message[index];
+            index++;
+
+            
+            if (index >= message.length) {
+              clearInterval(interval);
+            }
+          },
+          150); 
+        }
+        var xhr = new XMLHttpRequest();
+        var url = "https://api.openai.com/v1/completions";
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("Authorization", "Bearer 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");
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            var response = json.choices[0].text;
+
+            
+            var responseText = document.getElementById("chatgpt-response");
+            var index = 0;
+
+            
+            var interval = setInterval(function() {
+              responseText.innerHTML += response[index];
+              index++;
+
+              
+              if (index >= response.length) {
+                clearInterval(interval);
+              }
+            },
+            50); 
+          }
+        };
+
+        var data = JSON.stringify({
+          "prompt": document.getElementById("chat-gpt-input").value,
+          "max_tokens": 2048,
+          "temperature": 0.5,
+          "top_p": 1,
+          "frequency_penalty": 0,
+          "presence_penalty": 0,
+          "model": "text-davinci-003"
+        });
+        console.log(data);
+        await printMessage('loding...Wait 1 Minute :)');
+		await xhr.send(data);
+      }
+	</script>
+  </head>
+	 
+  <body>
+        <div class="page-loader">
+      <div class="loader">Loading...</div></div>
+    <header id="sticky-header">
+      <div class="header-area">
+        <div class="container sm-100">
+          <div class="row">
+            <div class="col-md-3 col-sm-2">
+              <div class="logo text-upper">
+                  <h1>Welcome</HTML></html><span class="badge badge-secondary">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="basic-portfolio-area ptb-10">
+      <div class="filter-menu text-center mb-40">
+        <div class="jumbotron">
+          <h1 class="display-4"> Robot from the Future </h1>
+          <br>
+          <p class="lead">What Do You Want To Know ? Use Me</p>
+          <br>
+          <hr class="my-4">
+          <p>Produced   by   Jack</p>
+            <br>
+        </div>
+	  </div>
+
+      <div class="call-to-action-area gray-bg ptb-60">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <div class="form-group">
+                <label></label>
+                <textarea class="form-control" id="chat-gpt-input" placeholder="Us Me Something" rows="3" resize="none" style="width: 135%; margin: 0 auto; background-color: #E0FFFF; color: #333; border: 1px solid #ccc; border-radius: 12px;"></textarea>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="call-to-action">
+                  <button onclick="callCHATGPT()" autocomplete="off" class="btn btn-large" href="#" style="background-color: #333; color: #f4f4f4; border-radius: 10px">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Type Question
+                    <br>Get Answer</button></div>
+              </div>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="form-group">
+                  <label></label>
+                  <textarea class="form-control" id="chatgpt-response" placeholder="Waiting to answer" rows="26" resize="none" style="width: 150%;height: auto; margin: 0 auto; background-color: #E0FFFF; color: #333; border: 1px solid #ccc; border-radius: 10px; overflow: scroll;" readonly="true"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+		</div>
+        <script src="js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/isotope.pkgd.min.js"></script>
+        <script src="js/imagesloaded.pkgd.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/jquery.meanmenu.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+		<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?05df94d9887ea8acd5a75f70e8a6bb11";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+
+  </body>
+
+</html>
